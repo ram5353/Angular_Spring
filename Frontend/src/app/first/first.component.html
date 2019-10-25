@@ -1,0 +1,10 @@
+<form [formGroup]="getAsset" (ngSubmit)="showData()" >
+
+
+  <input type="text" [(ngModel)]="id" />
+  <input type="submit" value="click"/>
+</form>
+
+
+  <p>{{assetServiceDetails.id + "  " + assetServiceDetails.name}}</p>
+

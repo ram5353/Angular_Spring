@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	// Spring
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('org.springframework.boot:spring-boot-starter-mail')
+    compile('org.springframework.boot:spring-boot-starter-freemarker')
+    
+    testCompile('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'junit', module: 'junit'
+    }
+    
+    //model mapper
+    compile group: 'org.modelmapper.extensions', name: 'modelmapper-spring', version: '2.3.0'
+    
+    // Database
+    compile("org.flywaydb:flyway-core:5.1.4")
+    implementation('org.flywaydb:flyway-core')
+    compile("com.h2database:h2:+")
+    runtime('mysql:mysql-connector-java')
+    testCompile group: 'ch.vorburger.mariaDB4j', name: 'mariaDB4j', version: '2.3.0'
+
+	runtimeOnly 'com.h2database:h2'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
